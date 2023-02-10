@@ -1,7 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import {
-    initialWorldState,
     isAliveCells,
     isRun,
     itemSize,
@@ -68,7 +67,7 @@
     startTime = undefined;
     stepCount = 1;
     stepLength = initialStepLength;
-    $worldState = initialWorldState;
+    worldState.reset();
   }
 </script>
 

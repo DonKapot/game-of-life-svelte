@@ -57,13 +57,19 @@ export const getWorldStore = (size = get(worldSize)) => {
           })
         )
       ),
-    reset: () => set([]),
+    reset: () =>
+      set(
+        get(store).map((c) =>
+          c.map((item) => ({
+            ...item,
+            life: false,
+          }))
+        )
+      ),
   };
 };
 
 export let worldState = getWorldStore(get(worldSize));
-
-export const initialWorldState = get(worldState);
 
 export const aliveCells = derived(worldState, ($items) =>
   $items.flat(1).filter((e) => e.life)
